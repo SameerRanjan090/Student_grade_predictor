@@ -41,7 +41,7 @@ student-grade-predictor/
 
 ---
 
-## ⚙️ Setup & Installation
+##  Setup & Installation
 
 ### 1. Clone the Repository
 ```bash
@@ -85,7 +85,7 @@ When you run the script, it will:
 
 ---
 
-## 📊 Features Explained
+##  Features Explained
 
 | Feature | Description |
 |---------|-------------|
