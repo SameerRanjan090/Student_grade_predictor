@@ -87,3 +87,15 @@ X_train_s = scaler.fit_transform(X_train)
 X_test_s  = scaler.transform(X_test)
 
 print(f"\n\n  Train size : {len(X_train)} | Test size : {len(X_test)}")
+
+# ─────────────────────────────────────────────
+# 4. TRAIN MODEL
+# ─────────────────────────────────────────────
+
+model = LinearRegression()
+model.fit(X_train_s, y_train)
+
+print("\n\n Model Trained — Coefficients:")
+for feat, coef in zip(FEATURES, model.coef_):
+    print(f"  {feat:<22} {coef:+.4f}")
+print(f"  {'Intercept':<22} {model.intercept_:+.4f}")
