@@ -214,3 +214,9 @@ def run_predictor():
         print("   • Get at least 6–7 hours of sleep.")
     if assignment < 60:
         print("   • Focus on assignment scores — they correlate strongly.")
+# ─────────────────────────────────────────────
+# 8. ENTRY POINT
+# ─────────────────────────────────────────────
+
+if __name__ == "__main__":
+    run_predictor()
