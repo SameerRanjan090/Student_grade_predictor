@@ -99,3 +99,19 @@ print("\n\n Model Trained — Coefficients:")
 for feat, coef in zip(FEATURES, model.coef_):
     print(f"  {feat:<22} {coef:+.4f}")
 print(f"  {'Intercept':<22} {model.intercept_:+.4f}")
+
+# ─────────────────────────────────────────────
+# 5. EVALUATE MODEL
+# ─────────────────────────────────────────────
+
+y_pred = model.predict(X_test_s)
+
+mae  = mean_absolute_error(y_test, y_pred)
+mse  = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+r2   = r2_score(y_test, y_pred)
+
+print("\n\n Model Evaluation on Test Set:")
+print(f"  Mean Absolute Error  (MAE)  : {mae:.2f}")
+print(f"  Root Mean Sq. Error  (RMSE) : {rmse:.2f}")
+print(f"  R² Score                    : {r2:.4f}  ({r2*100:.1f}% variance explained)")
