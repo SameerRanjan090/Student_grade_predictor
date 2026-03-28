@@ -57,12 +57,33 @@ print(df.head().to_string(index=False))
 # 2. EXPLORATORY DATA ANALYSIS
 # ─────────────────────────────────────────────
 
-print("\n\n📈 Basic Statistics:")
+print("\n\n Basic Statistics:")
 print(df.describe().round(2).to_string())
 
 # Correlation with final score
-print("\n\n🔗 Correlation with Final Score:")
+print("\n\n Correlation with Final Score:")
 corr = df.corr()["final_score"].drop("final_score").sort_values(ascending=False)
 for feat, val in corr.items():
     bar = "█" * int(abs(val) * 20)
     print(f"  {feat:<20} {val:+.3f}  {bar}")
+
+# ─────────────────────────────────────────────
+# 3. PREPARE DATA
+# ─────────────────────────────────────────────
+
+FEATURES = ["study_hours", "attendance_pct", "sleep_hours", "assignment_score"]
+TARGET   = "final_score"
+
+X = df[FEATURES]
+y = df[TARGET]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Feature scaling (good practice)
+scaler  = StandardScaler()
+X_train_s = scaler.fit_transform(X_train)
+X_test_s  = scaler.transform(X_test)
+
+print(f"\n\n  Train size : {len(X_train)} | Test size : {len(X_test)}")
