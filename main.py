@@ -52,3 +52,17 @@ print("=" * 55)
 print(f"\n Dataset shape : {df.shape[0]} students, {df.shape[1]} features")
 print("\nFirst 5 rows:")
 print(df.head().to_string(index=False))
+
+# ─────────────────────────────────────────────
+# 2. EXPLORATORY DATA ANALYSIS
+# ─────────────────────────────────────────────
+
+print("\n\n📈 Basic Statistics:")
+print(df.describe().round(2).to_string())
+
+# Correlation with final score
+print("\n\n🔗 Correlation with Final Score:")
+corr = df.corr()["final_score"].drop("final_score").sort_values(ascending=False)
+for feat, val in corr.items():
+    bar = "█" * int(abs(val) * 20)
+    print(f"  {feat:<20} {val:+.3f}  {bar}")
